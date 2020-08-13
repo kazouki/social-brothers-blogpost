@@ -34,6 +34,11 @@ export default function Layout(props) {
       background: "orange",
       borderRadius: 30,
     },
+    loadButtonCards: {
+      color: "white",
+      background: "orange",
+      borderRadius: 30,
+    },
     paper: {
       padding: theme.spacing(2),
       textAlign: "center",
@@ -45,7 +50,7 @@ export default function Layout(props) {
       textAlign: "center",
       color: theme.palette.text.secondary,
     },
-    paperForm: {
+    cardGrid: {
       padding: theme.spacing(2),
       minHeight: 250,
       color: theme.palette.text.secondary,
@@ -78,8 +83,8 @@ export default function Layout(props) {
           </Paper>
         </Grid>
         <Grid item xs={12} sm={6}>
-          <Paper className={classes.paperForm}>
-            <Grid container spacing={3} className={classes.cardGrid}>
+          <Paper className={classes.cardGrid}>
+            <Grid container spacing={3}>
               <Grid item sm={12} lg={6}>
                 <BlogCard />
               </Grid>
@@ -87,20 +92,16 @@ export default function Layout(props) {
                 <BlogCard />
               </Grid>
             </Grid>
+
+            <Grid item xs={12} sm={12}>
+              <Container className={classes.paper}>
+                <Button className={classes.loadButtonCards} variant="contained">
+                  Meer laden
+                </Button>
+              </Container>
+            </Grid>
           </Paper>
         </Grid>
-
-        <Grid item sm={6} xs={12}></Grid>
-        <Grid item sm={2} xs={4}></Grid>
-
-        <Grid item sm={2} xs={4}>
-          <Container>
-            <Button className={classes.loadButton} variant="contained">
-              Meer laden
-            </Button>
-          </Container>
-        </Grid>
-        <Grid item sm={2} xs={4}></Grid>
       </Grid>
     </div>
   );

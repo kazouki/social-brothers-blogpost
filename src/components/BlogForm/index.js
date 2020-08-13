@@ -16,6 +16,7 @@ const useStyles = makeStyles({
   },
   inputField: {
     background: "#F8F8F8",
+    borderRadius: 0,
   },
 });
 
