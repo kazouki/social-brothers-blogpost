@@ -1,16 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import BlogForm from "../../components/BlogForm";
 
-////////
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
-import { TextField } from "@material-ui/core";
-import MenuItem from "@material-ui/core/MenuItem";
-
-import Divider from "@material-ui/core/Divider";
 
 export default function Layout(props) {
   const useStyles = makeStyles((theme) => ({
@@ -91,11 +86,7 @@ export default function Layout(props) {
           </Grid>
 
           <Grid item xs={6}></Grid>
-          <Grid item xs={6}>
-            {/* <Paper className={classes.paper}>
-              <Container></Container>
-            </Paper> */}
-          </Grid>
+          <Grid item xs={6}></Grid>
           <Grid item xs={3}></Grid>
           <Grid item xs={3}></Grid>
           <Grid item xs={6}>
@@ -105,7 +96,6 @@ export default function Layout(props) {
               </Container>
             </Paper>
           </Grid>
-          {/* <Grid item xs={3}></Grid> */}
         </Grid>
       </div>
     </div>
