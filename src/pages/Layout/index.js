@@ -1,8 +1,6 @@
 import React from "react";
 import BlogForm from "../../components/BlogForm";
 import BlogCard from "../../components/BlogCard";
-
-import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
@@ -17,9 +15,7 @@ export default function Layout(props) {
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-
       height: "100%",
-
       flexGrow: 1,
     },
     layoutGrid: {
@@ -39,26 +35,20 @@ export default function Layout(props) {
       background: "orange",
       borderRadius: 30,
     },
-    paper: {
+    section: {
       padding: theme.spacing(2),
       textAlign: "center",
-      color: theme.palette.text.secondary,
+      background: "white",
     },
-    paperTop: {
+    sectionTop: {
       marginTop: 10,
       padding: theme.spacing(2),
       textAlign: "center",
-      color: theme.palette.text.secondary,
     },
     cardGrid: {
       padding: theme.spacing(2),
       minHeight: 250,
-      color: theme.palette.text.secondary,
-    },
-    formRoot: {
-      padding: theme.spacing(2),
-      minHeight: 250,
-      color: theme.palette.text.secondary,
+      background: "white",
     },
   }));
   const classes = useStyles();
@@ -67,23 +57,23 @@ export default function Layout(props) {
     <div className={classes.root}>
       <Grid container spacing={3} className={classes.layoutGrid}>
         <Grid item xs={12}>
-          <Paper className={classes.paperTop}>
+          <Container className={classes.sectionTop}>
             <b>banner</b>
-          </Paper>
+          </Container>
         </Grid>
 
         <Grid item xs={12} sm={6}>
-          <Paper className={classes.paper}>
+          <Container className={classes.section}>
             <BlogForm />
             <Container>
               <Button className={classes.loadButton} variant="contained">
                 Bericht aanmaken
               </Button>
             </Container>
-          </Paper>
+          </Container>
         </Grid>
         <Grid item xs={12} sm={6}>
-          <Paper className={classes.cardGrid}>
+          <Container className={classes.cardGrid}>
             <Grid container spacing={3}>
               <Grid item sm={12} lg={6}>
                 <BlogCard />
@@ -92,15 +82,14 @@ export default function Layout(props) {
                 <BlogCard />
               </Grid>
             </Grid>
-
             <Grid item xs={12} sm={12}>
-              <Container className={classes.paper}>
+              <Container className={classes.section}>
                 <Button className={classes.loadButtonCards} variant="contained">
                   Meer laden
                 </Button>
               </Container>
             </Grid>
-          </Paper>
+          </Container>
         </Grid>
       </Grid>
     </div>
