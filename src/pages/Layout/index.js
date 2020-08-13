@@ -1,5 +1,6 @@
 import React from "react";
 import BlogForm from "../../components/BlogForm";
+import BlogCards from "../../components/BlogCards";
 
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
@@ -56,48 +57,39 @@ export default function Layout(props) {
   const classes = useStyles();
 
   return (
-    <div>
-      <div className={classes.root}>
-        <Grid container spacing={3} className={classes.cardGrid}>
-          <Grid item xs={12}>
-            <Paper className={classes.paperTop}>
-              <b>banner</b>
-            </Paper>
-          </Grid>
-
-          <Grid item xs={6}>
-            <Paper className={classes.paper}>
-              <BlogForm />
-            </Paper>
-          </Grid>
-          <Grid item xs={6}>
-            <Paper className={classes.paperForm}>
-              <div style={{ marginBottom: 20 }}>
-                <Container>
-                  <strong>
-                    <em style={{ fontSize: 8 }}> ... </em>
-                  </strong>
-                  <strong>
-                    <em style={{ fontSize: 8 }}>...</em>
-                  </strong>
-                </Container>
-              </div>
-            </Paper>
-          </Grid>
-
-          <Grid item xs={6}></Grid>
-          <Grid item xs={6}></Grid>
-          <Grid item xs={3}></Grid>
-          <Grid item xs={3}></Grid>
-          <Grid item xs={6}>
-            <Paper className={classes.paper}>
-              <Container>
-                <Button>Meer laden button</Button>
-              </Container>
-            </Paper>
-          </Grid>
+    <div className={classes.root}>
+      <Grid container spacing={3} className={classes.cardGrid}>
+        <Grid item xs={12}>
+          <Paper className={classes.paperTop}>
+            <b>banner</b>
+          </Paper>
         </Grid>
-      </div>
+
+        <Grid item xs={12} sm={6}>
+          <Paper className={classes.paper}>
+            <BlogForm />
+          </Paper>
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <Paper className={classes.paperForm}>
+            <Container>
+              <BlogCards />
+            </Container>
+          </Paper>
+        </Grid>
+
+        <Grid item sm={6} xs={12}></Grid>
+        <Grid item sm={2} xs={4}></Grid>
+
+        <Grid item sm={2} xs={4}>
+          <Paper className={classes.paper}>
+            <Container>
+              <Button>Meer laden button</Button>
+            </Container>
+          </Paper>
+        </Grid>
+        <Grid item sm={2} xs={4}></Grid>
+      </Grid>
     </div>
   );
 }
