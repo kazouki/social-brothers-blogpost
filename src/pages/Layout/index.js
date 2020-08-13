@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import BlogForm from "../../components/BlogForm";
 
 ////////
 import Paper from "@material-ui/core/Paper";
@@ -8,9 +9,6 @@ import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import { TextField } from "@material-ui/core";
 import MenuItem from "@material-ui/core/MenuItem";
-
-// import List from "@material-ui/core/List";
-// import ListItem from "@material-ui/core/ListItem";
 
 import Divider from "@material-ui/core/Divider";
 
@@ -62,97 +60,6 @@ export default function Layout(props) {
   }));
   const classes = useStyles();
 
-  const RenderForm = () => {
-    const [category, setCategory] = React.useState("category 1");
-    const [content, setContent] = React.useState("Controlled");
-    const [title, setTitle] = React.useState("Controlled");
-
-    const [inputState, setInputState] = useState({
-      title: "",
-      category: "category 1",
-      content: "",
-    });
-
-    const handleInputChange = (event) => {
-      setInputState({ ...inputState, [event.target.name]: event.target.value });
-    };
-
-    const categories = [
-      {
-        value: "categorie 1",
-        label: "categorie 1",
-      },
-      {
-        value: "categorie 2",
-        label: "categorie 2",
-      },
-      {
-        value: "categorie 3",
-        label: "categorie 3",
-      },
-      {
-        value: "categorie 4",
-        label: "categorie 4",
-      },
-    ];
-    return (
-      //   <form className={classes.formRoot} noValidate autoComplete="off">
-      <>
-        <Divider />
-        <div>
-          <b>
-            <i>textfield</i>
-            <TextField
-              name="title"
-              value={inputState.title}
-              onChange={handleInputChange}
-              fullWidth={true}
-              variant="filled"
-              label="..."
-            />
-          </b>
-        </div>
-        <div>
-          <p>
-            <TextField
-              name="category"
-              fullWidth={true}
-              id="filled-select-currency"
-              select
-              label="Select"
-              value={inputState.category}
-              onChange={handleInputChange}
-              helperText="kies je categorie"
-              variant="filled"
-            >
-              {categories.map((cat) => (
-                <MenuItem key={cat.value} value={cat.value}>
-                  {cat.label}
-                </MenuItem>
-              ))}
-            </TextField>
-          </p>
-        </div>
-        <div>
-          <p>
-            <TextField
-              name="content"
-              variant="filled"
-              fullWidth={true}
-              id="standard-multiline-flexible"
-              label="Multiline"
-              multiline
-              rows={8}
-              value={inputState.content}
-              onChange={handleInputChange}
-            />
-          </p>
-        </div>
-        {/* </form> */}
-      </>
-    );
-  };
-
   return (
     <div>
       <div className={classes.root}>
@@ -165,7 +72,7 @@ export default function Layout(props) {
 
           <Grid item xs={6}>
             <Paper className={classes.paper}>
-              <RenderForm />
+              <BlogForm />
             </Paper>
           </Grid>
           <Grid item xs={6}>
