@@ -1,6 +1,6 @@
 import React from "react";
 import BlogForm from "../../components/BlogForm";
-import BlogCards from "../../components/BlogCards";
+import BlogCard from "../../components/BlogCard";
 
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
@@ -22,15 +22,16 @@ export default function Layout(props) {
 
       flexGrow: 1,
     },
-    cardGrid: {
+    layoutGrid: {
       maxWidth: "85%",
       marginTop: 15,
       marginBottom: 30,
     },
-    inboxListRoot: {
-      width: "100%",
-      maxWidth: "80%",
-      backgroundColor: theme.palette.background.paper,
+
+    loadButton: {
+      color: "white",
+      background: "orange",
+      borderRadius: 30,
     },
     paper: {
       padding: theme.spacing(2),
@@ -58,7 +59,7 @@ export default function Layout(props) {
 
   return (
     <div className={classes.root}>
-      <Grid container spacing={3} className={classes.cardGrid}>
+      <Grid container spacing={3} className={classes.layoutGrid}>
         <Grid item xs={12}>
           <Paper className={classes.paperTop}>
             <b>banner</b>
@@ -72,9 +73,14 @@ export default function Layout(props) {
         </Grid>
         <Grid item xs={12} sm={6}>
           <Paper className={classes.paperForm}>
-            <Container>
-              <BlogCards />
-            </Container>
+            <Grid container spacing={3} className={classes.cardGrid}>
+              <Grid item sm={12} lg={6}>
+                <BlogCard />
+              </Grid>
+              <Grid item sm={12} lg={6}>
+                <BlogCard />
+              </Grid>
+            </Grid>
           </Paper>
         </Grid>
 
@@ -82,11 +88,11 @@ export default function Layout(props) {
         <Grid item sm={2} xs={4}></Grid>
 
         <Grid item sm={2} xs={4}>
-          <Paper className={classes.paper}>
-            <Container>
-              <Button>Meer laden button</Button>
-            </Container>
-          </Paper>
+          <Container>
+            <Button className={classes.loadButton} variant="contained">
+              Meer Laden
+            </Button>
+          </Container>
         </Grid>
         <Grid item sm={2} xs={4}></Grid>
       </Grid>

@@ -17,7 +17,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function BlogCards() {
+export default function BlogCard() {
   const classes = useStyles();
 
   return (

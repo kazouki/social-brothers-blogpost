@@ -40,6 +40,7 @@ export default function BlogForm() {
         <b>
           <i>textfield</i>
           <TextField
+            InputProps={{ disableUnderline: true }}
             name="title"
             value={inputState.title}
             onChange={handleInputChange}
@@ -52,6 +53,7 @@ export default function BlogForm() {
       <div>
         <p>
           <TextField
+            InputProps={{ disableUnderline: true }}
             name="category"
             fullWidth={true}
             id="filled-select-currency"
@@ -73,6 +75,7 @@ export default function BlogForm() {
       <div>
         <p>
           <TextField
+            InputProps={{ disableUnderline: true }}
             name="content"
             variant="filled"
             fullWidth={true}
