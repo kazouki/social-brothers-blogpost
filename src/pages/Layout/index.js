@@ -4,7 +4,7 @@ import BlogCard from "../../components/BlogCard";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, withStyles } from "@material-ui/core/styles";
 
 export default function Layout(props) {
   const useStyles = makeStyles((theme) => ({
@@ -30,11 +30,6 @@ export default function Layout(props) {
       background: "orange",
       borderRadius: 30,
     },
-    loadButtonCards: {
-      color: "white",
-      background: "orange",
-      borderRadius: 30,
-    },
     section: {
       padding: theme.spacing(2),
       textAlign: "center",
@@ -53,6 +48,45 @@ export default function Layout(props) {
   }));
   const classes = useStyles();
 
+  const SectionButton = withStyles({
+    root: {
+      boxShadow: "none",
+      textTransform: "none",
+      fontSize: 11,
+      fontWeight: "bold",
+      padding: "10px 15%",
+      border: "1px solid",
+      lineHeight: 1.5,
+      color: "white",
+      background: "orange",
+      borderRadius: 30,
+      fontFamily: [
+        "-apple-system",
+        "BlinkMacSystemFont",
+        '"Segoe UI"',
+        "Roboto",
+        '"Helvetica Neue"',
+        "Arial",
+        "sans-serif",
+        '"Apple Color Emoji"',
+        '"Segoe UI Emoji"',
+        '"Segoe UI Symbol"',
+      ].join(","),
+      "&:hover": {
+        backgroundColor: "#ffc04c",
+        boxShadow: "none",
+      },
+      "&:active": {
+        boxShadow: "none",
+        backgroundColor: "#0062cc",
+        borderColor: "#005cbf",
+      },
+      "&:focus": {
+        boxShadow: "0 0 0 0.2rem rgba(0,123,255,.5)",
+      },
+    },
+  })(Button);
+
   return (
     <div className={classes.root}>
       <Grid container spacing={3} className={classes.layoutGrid}>
@@ -66,9 +100,7 @@ export default function Layout(props) {
           <Container className={classes.section}>
             <BlogForm />
             <Container>
-              <Button className={classes.loadButton} variant="contained">
-                Bericht aanmaken
-              </Button>
+              <SectionButton>Bericht aanmaken</SectionButton>
             </Container>
           </Container>
         </Grid>
@@ -84,9 +116,7 @@ export default function Layout(props) {
             </Grid>
             <Grid item xs={12} sm={12}>
               <Container className={classes.section}>
-                <Button className={classes.loadButtonCards} variant="contained">
-                  Meer laden
-                </Button>
+                <SectionButton>Meer laden</SectionButton>
               </Container>
             </Grid>
           </Container>
