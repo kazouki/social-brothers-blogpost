@@ -17,12 +17,13 @@ export default function Layout(props) {
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      background: "white",
+
       height: "100%",
 
       flexGrow: 1,
     },
     layoutGrid: {
+      background: "#E8E8E8",
       maxWidth: "85%",
       marginTop: 15,
       marginBottom: 30,
@@ -69,6 +70,11 @@ export default function Layout(props) {
         <Grid item xs={12} sm={6}>
           <Paper className={classes.paper}>
             <BlogForm />
+            <Container>
+              <Button className={classes.loadButton} variant="contained">
+                Bericht aanmaken
+              </Button>
+            </Container>
           </Paper>
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -90,7 +96,7 @@ export default function Layout(props) {
         <Grid item sm={2} xs={4}>
           <Container>
             <Button className={classes.loadButton} variant="contained">
-              Meer Laden
+              Meer laden
             </Button>
           </Container>
         </Grid>

@@ -1,8 +1,20 @@
 import React, { useState } from "react";
 import { TextField } from "@material-ui/core";
 import MenuItem from "@material-ui/core/MenuItem";
+import Typography from "@material-ui/core/Typography";
+import "fontsource-roboto";
 
-import Divider from "@material-ui/core/Divider";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles({
+  root: {
+    width: "100%",
+    maxWidth: 500,
+  },
+  fieldLabel: {
+    display: "flex",
+  },
+});
 
 export default function BlogForm() {
   const [inputState, setInputState] = useState({
@@ -10,6 +22,8 @@ export default function BlogForm() {
     category: "category 1",
     content: "",
   });
+
+  const classes = useStyles();
 
   const handleInputChange = (event) => {
     setInputState({ ...inputState, [event.target.name]: event.target.value });
@@ -35,10 +49,16 @@ export default function BlogForm() {
   ];
   return (
     <>
-      <Divider />
       <div>
-        <b>
-          <i>textfield</i>
+        <p>
+          <Typography
+            className={classes.fieldLabel}
+            variant="caption"
+            display="block"
+            gutterBottom
+          >
+            Bericht naam
+          </Typography>
           <TextField
             InputProps={{ disableUnderline: true }}
             name="title"
@@ -46,22 +66,27 @@ export default function BlogForm() {
             onChange={handleInputChange}
             fullWidth={true}
             variant="filled"
-            label="..."
           />
-        </b>
+        </p>
       </div>
       <div>
         <p>
+          <Typography
+            className={classes.fieldLabel}
+            variant="caption"
+            display="block"
+            gutterBottom
+          >
+            Categorie
+          </Typography>
           <TextField
             InputProps={{ disableUnderline: true }}
             name="category"
             fullWidth={true}
-            id="filled-select-currency"
+            id="filled-select-category"
             select
-            label="Select"
             value={inputState.category}
             onChange={handleInputChange}
-            helperText="kies je categorie"
             variant="filled"
           >
             {categories.map((cat) => (
@@ -74,13 +99,20 @@ export default function BlogForm() {
       </div>
       <div>
         <p>
+          <Typography
+            className={classes.fieldLabel}
+            variant="caption"
+            display="block"
+            gutterBottom
+          >
+            Bericht
+          </Typography>
           <TextField
             InputProps={{ disableUnderline: true }}
             name="content"
             variant="filled"
             fullWidth={true}
             id="standard-multiline-flexible"
-            label="Multiline"
             multiline
             rows={8}
             value={inputState.content}
