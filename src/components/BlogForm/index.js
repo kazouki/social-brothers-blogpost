@@ -14,6 +14,9 @@ const useStyles = makeStyles({
   fieldLabel: {
     display: "flex",
   },
+  inputField: {
+    background: "#F8F8F8",
+  },
 });
 
 export default function BlogForm() {
@@ -60,7 +63,10 @@ export default function BlogForm() {
             Bericht naam
           </Typography>
           <TextField
-            InputProps={{ disableUnderline: true }}
+            InputProps={{
+              disableUnderline: true,
+              className: classes.inputField,
+            }}
             name="title"
             value={inputState.title}
             onChange={handleInputChange}
@@ -80,7 +86,10 @@ export default function BlogForm() {
             Categorie
           </Typography>
           <TextField
-            InputProps={{ disableUnderline: true }}
+            InputProps={{
+              disableUnderline: true,
+              className: classes.inputField,
+            }}
             name="category"
             fullWidth={true}
             id="filled-select-category"
@@ -108,7 +117,10 @@ export default function BlogForm() {
             Bericht
           </Typography>
           <TextField
-            InputProps={{ disableUnderline: true }}
+            InputProps={{
+              disableUnderline: true,
+              className: classes.inputField,
+            }}
             name="content"
             variant="filled"
             fullWidth={true}

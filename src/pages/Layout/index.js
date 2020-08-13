@@ -23,7 +23,7 @@ export default function Layout(props) {
       flexGrow: 1,
     },
     layoutGrid: {
-      background: "#E8E8E8",
+      background: "#F0F0F0",
       maxWidth: "85%",
       marginTop: 15,
       marginBottom: 30,
