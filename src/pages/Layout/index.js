@@ -13,7 +13,7 @@ export default function Layout(props) {
     },
     root: {
       display: "flex",
-      alignItems: "center",
+      //   alignItems: "center",
       justifyContent: "center",
       height: "100%",
       flexGrow: 1,
@@ -55,10 +55,10 @@ export default function Layout(props) {
       fontSize: 11,
       fontWeight: "bold",
       padding: "10px 15%",
-      border: "1px solid",
+      //   border: "1px solid #ffc04c",
       lineHeight: 1.5,
       color: "white",
-      background: "orange",
+      background: "#e59400",
       borderRadius: 30,
       fontFamily: [
         "-apple-system",
@@ -78,11 +78,12 @@ export default function Layout(props) {
       },
       "&:active": {
         boxShadow: "none",
-        backgroundColor: "#0062cc",
-        borderColor: "#005cbf",
+        border: "1px solid #ffe4b2",
+        backgroundColor: "#ffe4b2",
       },
       "&:focus": {
-        boxShadow: "0 0 0 0.2rem rgba(0,123,255,.5)",
+        //     border: "1px solid #ffe4b2",
+        //     // boxShadow: "0 0 0 0.2rem rgba(0,123,255,.5)",
       },
     },
   })(Button);

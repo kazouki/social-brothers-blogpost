@@ -16,7 +16,8 @@ const useStyles = makeStyles({
   },
   inputField: {
     background: "#F8F8F8",
-    borderRadius: 0,
+    border: "1px solid white",
+    padding: 6,
   },
 });
 
@@ -68,11 +69,12 @@ export default function BlogForm() {
               disableUnderline: true,
               className: classes.inputField,
             }}
+            autoComplete="off"
+            size="medium"
             name="title"
             value={inputState.title}
             onChange={handleInputChange}
             fullWidth={true}
-            variant="filled"
           />
         </p>
       </div>
@@ -91,13 +93,13 @@ export default function BlogForm() {
               disableUnderline: true,
               className: classes.inputField,
             }}
+            size="medium"
             name="category"
             fullWidth={true}
             id="filled-select-category"
             select
             value={inputState.category}
             onChange={handleInputChange}
-            variant="filled"
           >
             {categories.map((cat) => (
               <MenuItem key={cat.value} value={cat.value}>
@@ -122,8 +124,8 @@ export default function BlogForm() {
               disableUnderline: true,
               className: classes.inputField,
             }}
+            size="medium"
             name="content"
-            variant="filled"
             fullWidth={true}
             id="standard-multiline-flexible"
             multiline
