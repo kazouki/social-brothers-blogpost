@@ -21,7 +21,6 @@ export default function Layout() {
   const handleClickLoadMore = () => {
     dispatch(fetchPosts());
     dispatch({ type: "INCREMENT_PAGE" });
-    console.log(displayPosts);
   };
 
   const useStyles = makeStyles((theme) => ({
@@ -145,6 +144,7 @@ export default function Layout() {
                             image={post.img_url}
                             title={post.title}
                             content={post.content}
+                            cardId={post.id}
                           />
                         ) : (
                           <>laden..</>

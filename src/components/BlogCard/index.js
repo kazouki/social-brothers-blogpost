@@ -27,7 +27,11 @@ export default function BlogCard(props) {
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image={props.image}
+          image={
+            props.image.split("?")[1] === "random"
+              ? props.image.split("random")[0] + props.cardId
+              : props.image
+          }
           title={props.title}
         />
         <CardContent className={classes.cardContent}>
