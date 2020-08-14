@@ -1,6 +1,6 @@
 import api from "../../Api";
 
-export function fetchPosts(pages) {
+export function fetchPosts() {
   return async function (dispatch, getState) {
     try {
       const res = await api(`posts?page=${getState().post.page + 1}`);
@@ -16,7 +16,7 @@ export function fetchPosts(pages) {
 }
 
 export function initPosts(pages) {
-  return async function (dispatch, getState) {
+  return async function (dispatch) {
     try {
       pages.forEach(async (page) => {
         const res = await api(`posts?page=${page}`);
@@ -24,6 +24,33 @@ export function initPosts(pages) {
           dispatch({ type: "FETCH_POSTS", payload: res.data });
         }
       });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+}
+
+export function makePost() {
+  return async function (dispatch, getState) {
+    const { title, category_id = 1, content } = getState().form.formState;
+    try {
+      const res = await api(`posts`, {
+        method: "POST",
+        data: {
+          title,
+          content,
+          category_id,
+        },
+      });
+      if (res.statusText === "Created") {
+        dispatch({ type: "POST_STATUS", payload: true });
+        setTimeout(
+          () => dispatch({ type: "POST_STATUS", payload: false }),
+          5000
+        );
+
+        return res;
+      } else return null;
     } catch (e) {
       console.log(e);
     }

@@ -9,6 +9,7 @@ import { makeStyles, withStyles } from "@material-ui/core/styles";
 
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPosts } from "../../store/post/actions";
+import { makePost } from "../../store/post/actions";
 import { selectPosts } from "../../store/post/selectors";
 
 export default function Layout() {
@@ -21,6 +22,10 @@ export default function Layout() {
   const handleClickLoadMore = () => {
     dispatch(fetchPosts());
     dispatch({ type: "INCREMENT_PAGE" });
+  };
+
+  const handleClickSubmit = () => {
+    dispatch(makePost());
   };
 
   const useStyles = makeStyles((theme) => ({
@@ -79,10 +84,12 @@ export default function Layout() {
     root: {
       boxShadow: "none",
       textTransform: "none",
+      whiteSpace: "nowrap",
       fontSize: 11,
       fontWeight: "bold",
       padding: "10px 20px",
       width: "15vw",
+      minWidth: "200px",
       lineHeight: 1.5,
       color: "white",
       background: "#e59400",
@@ -127,7 +134,9 @@ export default function Layout() {
               </Container>
               <Container>
                 <p>
-                  <SectionButton>Bericht aanmaken</SectionButton>
+                  <SectionButton onClick={handleClickSubmit}>
+                    Bericht aanmaken
+                  </SectionButton>
                 </p>
               </Container>
             </Container>

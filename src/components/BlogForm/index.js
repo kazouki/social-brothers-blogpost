@@ -3,6 +3,10 @@ import { TextField } from "@material-ui/core";
 import MenuItem from "@material-ui/core/MenuItem";
 import Typography from "@material-ui/core/Typography";
 import "fontsource-roboto";
+import { selectCategories } from "../../store/form/selectors";
+import { selectPostStatus } from "../../store/form/selectors";
+import { useDispatch, useSelector } from "react-redux";
+import { Alert, AlertTitle } from "@material-ui/lab";
 
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -19,42 +23,47 @@ const useStyles = makeStyles({
     border: "1px solid white",
     padding: 6,
   },
+  alert: {
+    display: "inline-flex",
+    alignContent: "center",
+    marginBottom: 40,
+  },
 });
 
 export default function BlogForm() {
   const [inputState, setInputState] = useState({
     title: "",
-    category: "categorie 1",
+    category_id: "",
     content: "",
   });
 
+  const categories = useSelector(selectCategories);
+  const postStatus = useSelector(selectPostStatus);
+  const dispatch = useDispatch();
   const classes = useStyles();
 
   const handleInputChange = (event) => {
     setInputState({ ...inputState, [event.target.name]: event.target.value });
+    dispatch({
+      type: "FORM_STATE",
+      payload: { ...inputState, [event.target.name]: event.target.value },
+    });
   };
 
-  const categories = [
-    {
-      value: "categorie 1",
-      label: "categorie 1",
-    },
-    {
-      value: "categorie 2",
-      label: "categorie 2",
-    },
-    {
-      value: "categorie 3",
-      label: "categorie 3",
-    },
-    {
-      value: "categorie 4",
-      label: "categorie 4",
-    },
-  ];
   return (
     <>
       <div>
+        {postStatus ? (
+          <span className={classes.alert}>
+            <Alert severity="success">
+              <AlertTitle>Gelukt!</AlertTitle>
+              Je nieuwe bericht is aangemaakt
+              <p>
+                <strong>Klik op 'Meer Laden' om berichten te bekijken!</strong>
+              </p>
+            </Alert>
+          </span>
+        ) : null}
         <Typography
           className={classes.fieldLabel}
           variant="caption"
@@ -91,18 +100,22 @@ export default function BlogForm() {
             className: classes.inputField,
           }}
           size="medium"
-          name="category"
           fullWidth={true}
-          id="filled-select-category"
+          id="filled-select"
+          name="category_id"
           select
-          value={inputState.category}
+          value={inputState.category_id}
           onChange={handleInputChange}
         >
-          {categories.map((cat) => (
-            <MenuItem key={cat.value} value={cat.value}>
-              {cat.label}
-            </MenuItem>
-          ))}
+          {categories ? (
+            categories.map((cat) => (
+              <MenuItem key={cat.id} value={cat.id}>
+                {cat.name}
+              </MenuItem>
+            ))
+          ) : (
+            <MenuItem value={0}>loading</MenuItem>
+          )}
         </TextField>
       </div>
       <div>
