@@ -1,14 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { fetchPosts } from "./store/post/actions";
 import Layout from "./pages/Layout";
-import Testing from "./components/testing";
-
-// import './App.css';
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchPosts());
+    dispatch({ type: "INCREMENT_PAGE" });
+  }, [dispatch]);
+
   return (
     <div className="App">
       <Layout />
-      <Testing />
     </div>
   );
 }

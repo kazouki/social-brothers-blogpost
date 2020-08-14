@@ -9,7 +9,17 @@ import { makeStyles, withStyles } from "@material-ui/core/styles";
 import imageOne from "../../static/tech.jpg";
 import imageTwo from "../../static/tech1.jpg";
 
+import { useDispatch } from "react-redux";
+import { fetchPosts } from "../../store/post/actions";
+
 export default function Layout(props) {
+  const dispatch = useDispatch();
+
+  const handleClickLoadMore = async (event) => {
+    dispatch(fetchPosts());
+    dispatch({ type: "INCREMENT_PAGE" });
+  };
+
   const useStyles = makeStyles((theme) => ({
     margin: {
       margin: theme.spacing(1),
@@ -139,7 +149,9 @@ export default function Layout(props) {
               </Grid>
               <Grid item xs={12} sm={12}>
                 <Container className={classes.section}>
-                  <SectionButton>Meer laden</SectionButton>
+                  <SectionButton onClick={handleClickLoadMore}>
+                    Meer laden
+                  </SectionButton>
                 </Container>
               </Grid>
             </Container>
