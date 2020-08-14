@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import { initPosts } from "./store/post/actions";
 import { fetchCategories } from "./store/form/actions";
 import Layout from "./pages/Layout";
-// import TestTwo from "./components/testing2";
 
 function App() {
   const dispatch = useDispatch();
