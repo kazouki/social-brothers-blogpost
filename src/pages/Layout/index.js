@@ -15,17 +15,19 @@ export default function Layout(props) {
       margin: theme.spacing(1),
     },
     root: {
-      display: "flex",
-      justifyContent: "center",
+      textAlign: "center",
+      alignItems: "center",
       height: "100%",
       flexGrow: 1,
     },
     layoutGrid: {
       background: "#F0F0F0",
-      maxWidth: "85%",
       padding: 20,
       marginTop: 15,
       marginBottom: 30,
+    },
+    bannerGrid: {
+      background: "#F0F0F0",
     },
 
     loadButton: {
@@ -87,41 +89,42 @@ export default function Layout(props) {
 
   return (
     <div className={classes.root}>
-      <Grid container spacing={3} className={classes.layoutGrid}>
-        <Grid item xs={12}>
-          <Container className={classes.sectionTop}>
-            <Banner />
-          </Container>
+      <Container className={{ display: "inline-block" }}>
+        <Grid container spacing={3} className={classes.bannerGrid}>
+          <Banner />
         </Grid>
-
-        <Grid item xs={12} sm={6}>
-          <Container className={classes.section}>
-            <BlogForm />
-            <Container>
-              <p>
-                <SectionButton>Bericht aanmaken</SectionButton>
-              </p>
-            </Container>
-          </Container>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Container className={classes.cardGrid}>
-            <Grid container spacing={3}>
-              <Grid item sm={12} xs={12} lg={6}>
-                <BlogCard image={imageOne} />
-              </Grid>
-              <Grid item sm={12} xs={12} lg={6}>
-                <BlogCard image={imageTwo} />
-              </Grid>
-            </Grid>
-            <Grid item xs={12} sm={12}>
-              <Container className={classes.section}>
-                <SectionButton>Meer laden</SectionButton>
+      </Container>
+      <Container>
+        <Grid container spacing={3} className={classes.layoutGrid}>
+          <Grid item xs={12} sm={6}>
+            <Container className={classes.section}>
+              <BlogForm />
+              <Container>
+                <p>
+                  <SectionButton>Bericht aanmaken</SectionButton>
+                </p>
               </Container>
-            </Grid>
-          </Container>
+            </Container>
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <Container className={classes.cardGrid}>
+              <Grid container spacing={3}>
+                <Grid item sm={12} xs={12} lg={6}>
+                  <BlogCard image={imageOne} />
+                </Grid>
+                <Grid item sm={12} xs={12} lg={6}>
+                  <BlogCard image={imageTwo} />
+                </Grid>
+              </Grid>
+              <Grid item xs={12} sm={12}>
+                <Container className={classes.section}>
+                  <SectionButton>Meer laden</SectionButton>
+                </Container>
+              </Grid>
+            </Container>
+          </Grid>
         </Grid>
-      </Grid>
+      </Container>
     </div>
   );
 }
