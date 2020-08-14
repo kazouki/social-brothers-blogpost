@@ -22,9 +22,8 @@ export default function Layout(props) {
     },
     layoutGrid: {
       background: "#F0F0F0",
-      padding: 20,
+      padding: 30,
       marginTop: 15,
-      marginBottom: 30,
     },
     bannerGrid: {
       background: "#F0F0F0",
@@ -40,14 +39,25 @@ export default function Layout(props) {
       textAlign: "center",
       background: "white",
     },
+    sectionForm: {
+      padding: theme.spacing(2),
+      minHeight: 500,
+      textAlign: "center",
+      background: "white",
+    },
+    formContainer: { marginTop: 30 },
     sectionTop: {
       padding: theme.spacing(0),
       textAlign: "center",
     },
     cardGrid: {
       padding: theme.spacing(2),
-      minHeight: 250,
+      minHeight: 500,
       background: "white",
+      textAlign: "left",
+    },
+    cardGridItems: {
+      marginTop: 10,
     },
   }));
   const classes = useStyles();
@@ -98,8 +108,10 @@ export default function Layout(props) {
       <Container>
         <Grid container spacing={3} className={classes.layoutGrid}>
           <Grid item xs={12} sm={6}>
-            <Container className={classes.section}>
-              <BlogForm />
+            <Container className={classes.sectionForm}>
+              <Container className={classes.formContainer}>
+                <BlogForm />
+              </Container>
               <Container>
                 <p>
                   <SectionButton>Bericht aanmaken</SectionButton>
@@ -109,12 +121,20 @@ export default function Layout(props) {
           </Grid>
           <Grid item xs={12} sm={6}>
             <Container className={classes.cardGrid}>
-              <Grid container spacing={3}>
+              <Grid container spacing={3} className={classes.cardGridItems}>
                 <Grid item sm={12} xs={12} lg={6}>
-                  <BlogCard image={imageOne} />
+                  <BlogCard
+                    image={imageOne}
+                    title="Lorem"
+                    content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi "
+                  />
                 </Grid>
                 <Grid item sm={12} xs={12} lg={6}>
-                  <BlogCard image={imageTwo} />
+                  <BlogCard
+                    image={imageTwo}
+                    title="ipsum"
+                    content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi "
+                  />
                 </Grid>
               </Grid>
               <Grid item xs={12} sm={12}>

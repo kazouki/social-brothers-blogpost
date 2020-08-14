@@ -124,7 +124,7 @@ export default function BlogForm() {
           fullWidth={true}
           id="standard-multiline-flexible"
           multiline
-          rows={8}
+          rows={16}
           value={inputState.content}
           onChange={handleInputChange}
         />
