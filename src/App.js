@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { fetchPosts } from "./store/post/actions";
+import { initPosts } from "./store/post/actions";
 import Layout from "./pages/Layout";
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchPosts());
-    dispatch({ type: "INCREMENT_PAGE" });
+    dispatch(initPosts([1, 2]));
+    dispatch({ type: "INIT_PAGE_COUNT", payload: 3 });
   }, [dispatch]);
 
   return (

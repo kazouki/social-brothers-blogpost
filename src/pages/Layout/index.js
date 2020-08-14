@@ -9,15 +9,18 @@ import { makeStyles, withStyles } from "@material-ui/core/styles";
 import imageOne from "../../static/tech.jpg";
 import imageTwo from "../../static/tech1.jpg";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchPosts } from "../../store/post/actions";
+import { selectPosts } from "../../store/post/selectors";
 
 export default function Layout(props) {
   const dispatch = useDispatch();
+  const posts = useSelector(selectPosts);
 
-  const handleClickLoadMore = async (event) => {
+  const handleClickLoadMore = () => {
     dispatch(fetchPosts());
     dispatch({ type: "INCREMENT_PAGE" });
+    console.log(posts);
   };
 
   const useStyles = makeStyles((theme) => ({
