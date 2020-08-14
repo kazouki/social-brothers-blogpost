@@ -24,7 +24,7 @@ const useStyles = makeStyles({
 export default function BlogForm() {
   const [inputState, setInputState] = useState({
     title: "",
-    category: "category 1",
+    category: "categorie 1",
     content: "",
   });
 
@@ -55,85 +55,79 @@ export default function BlogForm() {
   return (
     <>
       <div>
-        <p>
-          <Typography
-            className={classes.fieldLabel}
-            variant="caption"
-            display="block"
-            gutterBottom
-          >
-            Bericht naam
-          </Typography>
-          <TextField
-            InputProps={{
-              disableUnderline: true,
-              className: classes.inputField,
-            }}
-            autoComplete="off"
-            size="medium"
-            name="title"
-            value={inputState.title}
-            onChange={handleInputChange}
-            fullWidth={true}
-          />
-        </p>
+        <Typography
+          className={classes.fieldLabel}
+          variant="caption"
+          display="block"
+          gutterBottom
+        >
+          Bericht naam
+        </Typography>
+        <TextField
+          InputProps={{
+            disableUnderline: true,
+            className: classes.inputField,
+          }}
+          autoComplete="off"
+          size="medium"
+          name="title"
+          value={inputState.title}
+          onChange={handleInputChange}
+          fullWidth={true}
+        />
       </div>
       <div>
-        <p>
-          <Typography
-            className={classes.fieldLabel}
-            variant="caption"
-            display="block"
-            gutterBottom
-          >
-            Categorie
-          </Typography>
-          <TextField
-            InputProps={{
-              disableUnderline: true,
-              className: classes.inputField,
-            }}
-            size="medium"
-            name="category"
-            fullWidth={true}
-            id="filled-select-category"
-            select
-            value={inputState.category}
-            onChange={handleInputChange}
-          >
-            {categories.map((cat) => (
-              <MenuItem key={cat.value} value={cat.value}>
-                {cat.label}
-              </MenuItem>
-            ))}
-          </TextField>
-        </p>
+        <Typography
+          className={classes.fieldLabel}
+          variant="caption"
+          display="block"
+          gutterBottom
+        >
+          Categorie
+        </Typography>
+        <TextField
+          InputProps={{
+            disableUnderline: true,
+            className: classes.inputField,
+          }}
+          size="medium"
+          name="category"
+          fullWidth={true}
+          id="filled-select-category"
+          select
+          value={inputState.category}
+          onChange={handleInputChange}
+        >
+          {categories.map((cat) => (
+            <MenuItem key={cat.value} value={cat.value}>
+              {cat.label}
+            </MenuItem>
+          ))}
+        </TextField>
       </div>
       <div>
-        <p>
-          <Typography
-            className={classes.fieldLabel}
-            variant="caption"
-            display="block"
-            gutterBottom
-          >
-            Bericht
-          </Typography>
-          <TextField
-            InputProps={{
-              disableUnderline: true,
-              className: classes.inputField,
-            }}
-            size="medium"
-            name="content"
-            fullWidth={true}
-            id="standard-multiline-flexible"
-            multiline
-            rows={8}
-            value={inputState.content}
-            onChange={handleInputChange}
-          />
-        </p>
+        <Typography
+          className={classes.fieldLabel}
+          variant="caption"
+          display="block"
+          gutterBottom
+        >
+          Bericht
+        </Typography>
+        <TextField
+          InputProps={{
+            disableUnderline: true,
+            className: classes.inputField,
+          }}
+          size="medium"
+          name="content"
+          fullWidth={true}
+          id="standard-multiline-flexible"
+          multiline
+          rows={8}
+          value={inputState.content}
+          onChange={handleInputChange}
+        />
       </div>
     </>
   );

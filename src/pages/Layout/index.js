@@ -1,10 +1,13 @@
 import React from "react";
 import BlogForm from "../../components/BlogForm";
 import BlogCard from "../../components/BlogCard";
+import Banner from "../../components/Banner";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
+import imageOne from "../../static/tech.jpg";
+import imageTwo from "../../static/tech1.jpg";
 
 export default function Layout(props) {
   const useStyles = makeStyles((theme) => ({
@@ -13,7 +16,6 @@ export default function Layout(props) {
     },
     root: {
       display: "flex",
-      //   alignItems: "center",
       justifyContent: "center",
       height: "100%",
       flexGrow: 1,
@@ -21,6 +23,7 @@ export default function Layout(props) {
     layoutGrid: {
       background: "#F0F0F0",
       maxWidth: "85%",
+      padding: 20,
       marginTop: 15,
       marginBottom: 30,
     },
@@ -36,8 +39,7 @@ export default function Layout(props) {
       background: "white",
     },
     sectionTop: {
-      marginTop: 10,
-      padding: theme.spacing(2),
+      padding: theme.spacing(0),
       textAlign: "center",
     },
     cardGrid: {
@@ -55,7 +57,6 @@ export default function Layout(props) {
       fontSize: 11,
       fontWeight: "bold",
       padding: "10px 15%",
-      //   border: "1px solid #ffc04c",
       lineHeight: 1.5,
       color: "white",
       background: "#e59400",
@@ -81,10 +82,6 @@ export default function Layout(props) {
         border: "1px solid #ffe4b2",
         backgroundColor: "#ffe4b2",
       },
-      "&:focus": {
-        //     border: "1px solid #ffe4b2",
-        //     // boxShadow: "0 0 0 0.2rem rgba(0,123,255,.5)",
-      },
     },
   })(Button);
 
@@ -93,7 +90,7 @@ export default function Layout(props) {
       <Grid container spacing={3} className={classes.layoutGrid}>
         <Grid item xs={12}>
           <Container className={classes.sectionTop}>
-            <b>banner</b>
+            <Banner />
           </Container>
         </Grid>
 
@@ -101,18 +98,20 @@ export default function Layout(props) {
           <Container className={classes.section}>
             <BlogForm />
             <Container>
-              <SectionButton>Bericht aanmaken</SectionButton>
+              <p>
+                <SectionButton>Bericht aanmaken</SectionButton>
+              </p>
             </Container>
           </Container>
         </Grid>
         <Grid item xs={12} sm={6}>
           <Container className={classes.cardGrid}>
             <Grid container spacing={3}>
-              <Grid item sm={12} lg={6}>
-                <BlogCard />
+              <Grid item sm={12} xs={12} lg={6}>
+                <BlogCard image={imageOne} />
               </Grid>
-              <Grid item sm={12} lg={6}>
-                <BlogCard />
+              <Grid item sm={12} xs={12} lg={6}>
+                <BlogCard image={imageTwo} />
               </Grid>
             </Grid>
             <Grid item xs={12} sm={12}>
