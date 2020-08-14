@@ -6,14 +6,12 @@ import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
-import imageOne from "../../static/tech.jpg";
-import imageTwo from "../../static/tech1.jpg";
 
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPosts } from "../../store/post/actions";
 import { selectPosts } from "../../store/post/selectors";
 
-export default function Layout(props) {
+export default function Layout() {
   const dispatch = useDispatch();
   const posts = useSelector(selectPosts);
   const displayPosts = posts
@@ -116,7 +114,6 @@ export default function Layout(props) {
 
   return (
     <div className={classes.root}>
-      {/* <Container className={{ display: "inline-block" }}> */}
       <Container>
         <Grid container spacing={3} className={classes.bannerGrid}>
           <Banner />
