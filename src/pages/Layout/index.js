@@ -6,10 +6,23 @@ import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
-import imageOne from "../../static/tech.jpg";
-import imageTwo from "../../static/tech1.jpg";
 
-export default function Layout(props) {
+import { useDispatch, useSelector } from "react-redux";
+import { fetchPosts } from "../../store/post/actions";
+import { selectPosts } from "../../store/post/selectors";
+
+export default function Layout() {
+  const dispatch = useDispatch();
+  const posts = useSelector(selectPosts);
+  const displayPosts = posts
+    ?.slice(0, posts.length - 10)
+    .sort((a, b) => a.id - b.id);
+
+  const handleClickLoadMore = () => {
+    dispatch(fetchPosts());
+    dispatch({ type: "INCREMENT_PAGE" });
+  };
+
   const useStyles = makeStyles((theme) => ({
     margin: {
       margin: theme.spacing(1),
@@ -100,7 +113,7 @@ export default function Layout(props) {
 
   return (
     <div className={classes.root}>
-      <Container className={{ display: "inline-block" }}>
+      <Container>
         <Grid container spacing={3} className={classes.bannerGrid}>
           <Banner />
         </Grid>
@@ -122,24 +135,35 @@ export default function Layout(props) {
           <Grid item xs={12} sm={6}>
             <Container className={classes.cardGrid}>
               <Grid container spacing={3} className={classes.cardGridItems}>
-                <Grid item sm={12} xs={12} lg={6}>
-                  <BlogCard
-                    image={imageOne}
-                    title="Lorem"
-                    content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi "
-                  />
-                </Grid>
-                <Grid item sm={12} xs={12} lg={6}>
-                  <BlogCard
-                    image={imageTwo}
-                    title="ipsum"
-                    content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi "
-                  />
-                </Grid>
+                {displayPosts ? (
+                  <>
+                    {displayPosts.map((post) => (
+                      <Grid key={post.id} item sm={12} xs={12} lg={6}>
+                        {post.img_url ? (
+                          <BlogCard
+                            image={post.img_url}
+                            title={post.title}
+                            content={post.content}
+                            cardId={post.id}
+                          />
+                        ) : (
+                          <>laden..</>
+                        )}
+                      </Grid>
+                    ))}
+                  </>
+                ) : (
+                  <>
+                    <Grid item sm={12} xs={12} lg={6}></Grid>
+                    <Grid item sm={12} xs={12} lg={6}></Grid>
+                  </>
+                )}
               </Grid>
               <Grid item xs={12} sm={12}>
                 <Container className={classes.section}>
-                  <SectionButton>Meer laden</SectionButton>
+                  <SectionButton onClick={handleClickLoadMore}>
+                    Meer laden
+                  </SectionButton>
                 </Container>
               </Grid>
             </Container>
