@@ -13,6 +13,9 @@ import { makePost } from "../../store/post/actions";
 import { selectPosts } from "../../store/post/selectors";
 import { selectDisplayPage } from "../../store/post/selectors";
 
+import ScrollToTop from "react-scroll-up";
+import { AiOutlineArrowUp } from "react-icons/ai";
+
 export default function Layout() {
   const [newData, setNewData] = React.useState();
   const dispatch = useDispatch();
@@ -182,8 +185,14 @@ export default function Layout() {
                   <SectionButton onClick={handleClickLoadMore}>
                     Meer laden
                   </SectionButton>
+                  <ScrollToTop showUnder={160}>
+                    <h1>
+                      <b>
+                        <AiOutlineArrowUp />
+                      </b>
+                    </h1>
+                  </ScrollToTop>
                 </Container>
-                <div></div>
               </Grid>
             </Container>
           </Grid>
