@@ -4,7 +4,10 @@ export function fetchPosts() {
   return async function (dispatch, getState) {
     try {
       const res = await api(`posts?page=${getState().post.page}`);
-      dispatch({ type: "FETCH_POSTS", payload: res.data });
+      dispatch({
+        type: "FETCH_POSTS",
+        payload: res.data,
+      });
       if (res.data[0]) {
         dispatch({ type: "INCREMENT_FETCH_PAGE" });
         return res;
@@ -20,8 +23,8 @@ export function initPosts(pages) {
     try {
       pages.forEach(async (page) => {
         const res = await api(`posts?page=${page}`);
-        if (res) {
-          dispatch({ type: "FETCH_POSTS", payload: res.data });
+        if (res.data[0]) {
+          dispatch({ type: "INIT_POSTS", payload: res.data });
         }
       });
     } catch (e) {

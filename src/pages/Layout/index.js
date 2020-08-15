@@ -17,9 +17,7 @@ export default function Layout() {
   const dispatch = useDispatch();
   const posts = useSelector(selectPosts);
   const displayPage = useSelector(selectDisplayPage);
-  const displayPosts = posts
-    ?.slice(0, displayPage * 10)
-    .sort((a, b) => a.id - b.id);
+  const displayPosts = posts?.slice(0, displayPage * 10);
 
   const handleClickLoadMore = () => {
     if (displayPage < posts.length)
