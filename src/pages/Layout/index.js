@@ -14,6 +14,7 @@ import { selectPosts } from "../../store/post/selectors";
 import { selectDisplayPage } from "../../store/post/selectors";
 
 export default function Layout() {
+  const [newData, setNewData] = React.useState();
   const dispatch = useDispatch();
   const posts = useSelector(selectPosts);
   const displayPage = useSelector(selectDisplayPage);
@@ -23,6 +24,10 @@ export default function Layout() {
     if (displayPage < posts.length)
       dispatch({ type: "INCREMENT_DISPLAY_PAGE" });
     dispatch(fetchPosts());
+    if (newData)
+      setTimeout(function () {
+        newData.scrollIntoView({ behavior: "smooth" });
+      }, 200);
   };
 
   const handleClickSubmit = () => {
@@ -170,11 +175,15 @@ export default function Layout() {
                 )}
               </Grid>
               <Grid item xs={12} sm={12}>
-                <Container className={classes.section}>
+                <Container
+                  className={classes.section}
+                  ref={(ref) => setNewData(ref)}
+                >
                   <SectionButton onClick={handleClickLoadMore}>
                     Meer laden
                   </SectionButton>
                 </Container>
+                <div></div>
               </Grid>
             </Container>
           </Grid>
