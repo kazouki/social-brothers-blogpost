@@ -14,7 +14,11 @@ import { selectPosts } from "../../store/post/selectors";
 import { selectPage } from "../../store/post/selectors";
 import { selectDisplayPage } from "../../store/post/selectors";
 
+import ScrollToTop from "react-scroll-up";
+import { AiOutlineArrowUp } from "react-icons/ai";
+
 export default function Layout() {
+  const [newData, setNewData] = React.useState();
   const dispatch = useDispatch();
   const posts = useSelector(selectPosts);
   const page = useSelector(selectPage);
@@ -24,6 +28,10 @@ export default function Layout() {
   const handleClickLoadMore = () => {
     if (displayPage < page) dispatch({ type: "INCREMENT_DISPLAY_PAGE" });
     dispatch(fetchPosts());
+    if (newData)
+      setTimeout(function () {
+        newData.scrollIntoView({ behavior: "smooth" });
+      }, 200);
   };
 
   const handleClickSubmit = () => {
@@ -171,10 +179,20 @@ export default function Layout() {
                 )}
               </Grid>
               <Grid item xs={12} sm={12}>
-                <Container className={classes.section}>
+                <Container
+                  className={classes.section}
+                  ref={(ref) => setNewData(ref)}
+                >
                   <SectionButton onClick={handleClickLoadMore}>
                     Meer laden
                   </SectionButton>
+                  <ScrollToTop showUnder={160}>
+                    <h1>
+                      <b>
+                        <AiOutlineArrowUp />
+                      </b>
+                    </h1>
+                  </ScrollToTop>
                 </Container>
               </Grid>
             </Container>
