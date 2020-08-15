@@ -3,10 +3,10 @@ import api from "../../Api";
 export function fetchPosts() {
   return async function (dispatch, getState) {
     try {
-      const res = await api(`posts?page=${getState().post.page + 1}`);
-      if (res) {
-        dispatch({ type: "FETCH_POSTS", payload: res.data });
-
+      const res = await api(`posts?page=${getState().post.page}`);
+      dispatch({ type: "FETCH_POSTS", payload: res.data });
+      if (res.data[0]) {
+        dispatch({ type: "INCREMENT_FETCH_PAGE" });
         return res;
       } else return null;
     } catch (e) {
@@ -43,6 +43,7 @@ export function makePost() {
         },
       });
       if (res.statusText === "Created") {
+        dispatch({ type: "ADD_POST", payload: res.data });
         dispatch({ type: "POST_STATUS", payload: true });
         setTimeout(
           () => dispatch({ type: "POST_STATUS", payload: false }),
