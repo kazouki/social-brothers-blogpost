@@ -4,3 +4,6 @@ export const selectPosts = (state) => {
 export const selectDisplayPage = (state) => {
   return state.post.displayPage;
 };
+export const selectPage = (state) => {
+  return state.post.page;
+};

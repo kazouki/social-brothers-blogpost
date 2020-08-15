@@ -20,7 +20,6 @@ export default (state = initialState, { type, payload }) => {
       const newPosts = state.posts;
       const newestFirst = [...newPosts.reverse(), payload].reverse();
       return { ...state, posts: [...newestFirst] };
-
     case "INIT_PAGE_COUNT":
       return {
         ...state,
@@ -32,12 +31,9 @@ export default (state = initialState, { type, payload }) => {
         page: state.page + 1,
       };
     case "INCREMENT_DISPLAY_PAGE":
-      const counterMax = state.posts.length;
-      const counter =
-        state.displayPage === counterMax ? counterMax : state.displayPage + 1;
       return {
         ...state,
-        displayPage: counter,
+        displayPage: state.displayPage + 1,
       };
 
     default:

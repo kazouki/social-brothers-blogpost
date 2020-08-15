@@ -11,17 +11,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchPosts } from "../../store/post/actions";
 import { makePost } from "../../store/post/actions";
 import { selectPosts } from "../../store/post/selectors";
+import { selectPage } from "../../store/post/selectors";
 import { selectDisplayPage } from "../../store/post/selectors";
 
 export default function Layout() {
   const dispatch = useDispatch();
   const posts = useSelector(selectPosts);
+  const page = useSelector(selectPage);
   const displayPage = useSelector(selectDisplayPage);
   const displayPosts = posts?.slice(0, displayPage * 10);
 
   const handleClickLoadMore = () => {
-    if (displayPage < posts.length)
-      dispatch({ type: "INCREMENT_DISPLAY_PAGE" });
+    if (displayPage < page) dispatch({ type: "INCREMENT_DISPLAY_PAGE" });
     dispatch(fetchPosts());
   };
 
