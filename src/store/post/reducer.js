@@ -7,9 +7,19 @@ const initialState = {
 export default (state = initialState, { type, payload }) => {
   switch (type) {
     case "FETCH_POSTS":
-      return { ...state, posts: [...state.posts, ...payload] };
+      return {
+        ...state,
+        posts: [...state.posts, ...payload],
+      };
+    case "INIT_POSTS":
+      return {
+        ...state,
+        posts: [...state.posts, ...payload].sort((a, b) => a.id - b.id),
+      };
     case "ADD_POST":
-      return { ...state, posts: [...state.posts, payload] };
+      const newPosts = state.posts;
+      const newestFirst = [...newPosts.reverse(), payload].reverse();
+      return { ...state, posts: [...newestFirst] };
 
     case "INIT_PAGE_COUNT":
       return {
